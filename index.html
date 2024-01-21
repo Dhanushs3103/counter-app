@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter App</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body {
+            background-image: url("https://ak.picdn.net/shutterstock/videos/1025596145/thumb/3.jpg"); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            margin: 0; 
+            padding: 0; 
+            height: 100vh; 
+        }
+        
+        #counter {
+            width: fit-content;
+            padding: 40px;
+            margin: auto;
+            margin-top : 100px;
+            font-family: "Poppins", sans-serif;
+            font-size: 40px;
+            opacity: 1;
+        }
+
+        h1 {
+            color: #FFFFFF;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 25px;
+            font-weight: 600;
+            border: 0;
+            border-radius: 10px;
+            background-color: #65B741;
+            color: white;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: #54B435;
+        }
+
+        #reset {
+            background-color: #FF5B22;
+        }
+
+        #reset:hover {
+            background-color: #EE7214;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Code goes here
+    function Counter() {
+       let [count, setCount] = React.useState(0);
+        function increment () {
+            setCount(count + 1);
+        }
+        function decrement () {
+            if (count <= 0) {
+                setCount(0);
+            }
+            else {
+                setCount(count - 1);
+            }
+        }
+
+        function reset () {
+            setCount(0);
+        }
+        return (
+            <div id="counter">
+                <h1>Counter : {count}</h1>
+                <div id="buttons">
+                    <button onClick={increment}>Increment</button>
+                    <button id="reset" onClick={reset}>Reset</button>
+                    <button onClick={decrement}>Decrement</button>
+                </div>
+            </div>
+
+        );
+    }
+
+
+    function App () {
+        return (
+            <> 
+              <Counter/>
+            </>
+        );
+    }
+
+  let rootElement =  ReactDOM.createRoot (document.getElementById("root"));
+  rootElement.render(<App/>);
+  </script>
+</html>
+
